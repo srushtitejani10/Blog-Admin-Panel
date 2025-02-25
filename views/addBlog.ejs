@@ -1,0 +1,147 @@
+<%- include("./layouts/header") %>
+
+<!--end::Sidebar-->
+<!--begin::App Main-->
+<main class="app-main">
+  <!--begin::App Content Header-->
+  <div class="app-content-header">
+    <!--begin::Container-->
+    <div class="container-fluid">
+      <!--begin::Row-->
+      <div class="row align-center">
+        <div class="col-sm-6"><h3 class="mb-0">Add Blog</h3></div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-end">
+            <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+            <li class="breadcrumb-item active" aria-current="page">
+              Add Blog
+            </li>
+          </ol>
+        </div>
+      </div>
+      <!--end::Row-->
+    </div>
+    <!--end::Container-->
+  </div>
+  <!--end::App Content Header-->
+  <!--begin::App Content-->
+  <div class="app-content">
+    <!--begin::Container-->
+    <div class="container-fluid">
+      <!--begin::Row-->
+      <div class="row g-4">
+        <!--begin::Col-->
+
+        <!--end::Col-->
+        <!--begin::Col-->
+        <div class="col-md-12">
+          <!--begin::Quick Example-->
+          <div class="card card-primary card-outline mb-4">
+            <!--begin::Header-->
+
+            <!--end::Header-->
+            <!--begin::Form-->
+            <form method="post" action="/category/blog/insertBlogRecords" enctype="multipart/form-data">
+              <!--begin::Body-->
+              <div class="card-body row">
+                <div class="col-md-12 mb-3">
+                  <label for="validationCustom04" class="form-label"
+                    >Select Category</label
+                  >
+                  
+                  <select
+                    class="form-select"
+                    id="validationCustom04"
+                    name="categoryId"
+                  >
+                    <option selected disabled value="">--Select-Category--</option>
+                    <%categories.map((v,i)=>{%>
+                    <option value="<%=v.id%>"><%=v.categoryName%></option>
+                <%})%>
+                  </select>
+                </div>
+
+                <div class="col-md-12 mb-3">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="validationCustom01"
+                    required
+                    name="title"
+                    placeholder="Enter Title"
+                  />
+                  <div class="valid-feedback">Looks good!</div>
+                </div>
+                <div class="input-group mb-3">
+                  <input
+                    type="file"
+                    class="form-control"
+                    id="inputGroupFile02"
+                    name="image"
+                  />
+                  <label class="input-group-text" for="inputGroupFile02"
+                    >Upload</label
+                  >
+                </div>
+                <div class="input-group">
+                  <span class="input-group-text">Message</span>
+                  <textarea
+                    class="form-control"
+                    aria-label="With textarea"
+                    name="message"
+                  ></textarea>
+                </div>
+              </div>
+              <!--end::Body-->
+              <!--begin::Footer-->
+              <div class="card-footer">
+                <button type="submit" class="btn btn-primary me-0">
+                  Add Blog
+                </button>
+              </div>
+              <!--end::Footer-->
+            </form>
+            <!--end::Form-->
+          </div>
+          <!--end::Horizontal Form-->
+        </div>
+        <!--end::Col-->
+        <!--begin::Col-->
+        <div class="col-md-6">
+          <!--end::Form Validation-->
+        </div>
+        <!--end::Col-->
+      </div>
+      <!--end::Row-->
+    </div>
+    <!--end::Container-->
+  </div>
+  <!--end::App Content-->
+</main>
+<!--end::App Main-->
+<!--begin::Footer-->
+
+<%- include("./layouts/footer") %>
+
+<script src="https://cdn.tiny.cloud/1/3akpaaxisg9l2ylwkwf0oheatj6yw3vh0txw5vgn6rsgih93/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+
+<script>
+  tinymce.init({
+    selector: 'textarea',
+    plugins: [
+      // Core editing features
+      'anchor', 'autolink', 'charmap', 'codesample', 'emoticons', 'image', 'link', 'lists', 'media', 'searchreplace', 'table', 'visualblocks', 'wordcount',
+      // Your account includes a free trial of TinyMCE premium features
+      // Try the most popular premium features until Feb 5, 2025:
+      'checklist', 'mediaembed', 'casechange', 'export', 'formatpainter', 'pageembed', 'a11ychecker', 'tinymcespellchecker', 'permanentpen', 'powerpaste', 'advtable', 'advcode', 'editimage', 'advtemplate', 'ai', 'mentions', 'tinycomments', 'tableofcontents', 'footnotes', 'mergetags', 'autocorrect', 'typography', 'inlinecss', 'markdown','importword', 'exportword', 'exportpdf'
+    ],
+    toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+    tinycomments_mode: 'embedded',
+    tinycomments_author: 'Author name',
+    mergetags_list: [
+      { value: 'First.Name', title: 'First Name' },
+      { value: 'Email', title: 'Email' },
+    ],
+    ai_request: (request, respondWith) => respondWith.string(() => Promise.reject('See docs to implement AI Assistant')),
+  });
+</script>

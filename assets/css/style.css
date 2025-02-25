@@ -1,0 +1,71 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.myProfile1{
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-radius: 15px;
+    padding: 20px 40px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+.profile img {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+}
+.adminDetails h2{
+    font-size: 18px;
+    color: #0D6EFD;
+    margin: 3px 0;
+    font-weight: 600;
+}
+.adminDetails h4{
+    color: #343A40;
+    font-size: 17px;
+    margin: 3px 0 ;
+}
+.adminDetails p{
+    color: #343A40;
+}
+.info{
+    display: flex;
+    flex-wrap: wrap;
+    background-color: white;
+    border-radius: 15px;
+    padding: 20px 40px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+.info h4{
+    color: #0D6EFD;
+    font-size: 18px;
+    font-weight: 600;
+}
+.info h3{
+    font-size: 16px;
+    font-weight: 500;
+    margin: 5px 0;
+    color: #86898b;
+}
+.info h2{
+    color: black;
+    font-size: 16px;
+}
+.infoTitle{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.editBtn{
+    display: flex;
+    background-color: #0D6EFD;
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 10px;
+}
+.editBtn p{
+    margin-right: 6px;
+}

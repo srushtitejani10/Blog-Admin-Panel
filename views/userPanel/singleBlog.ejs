@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Panel</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="/icons/remixicon.css" type="text/css"/>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f5f7;
+      color: #333;
+    }
+
+    header {
+      background-color: #1d3557;
+      color: #fff;
+      border-bottom-left-radius: 20px;
+      border-bottom-right-radius: 20px;
+      padding: 20px 0;
+    }
+
+    header a {
+      text-decoration: none;
+      color: #fff;
+    }
+
+    header a:hover {
+      color: #e63946;
+    }
+
+    .header-title {
+      font-size: 28px;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    .header-icons a {
+      font-size: 20px;
+      margin: 0 10px;
+    }
+
+    .header-icons a:hover {
+      color: #e63946;
+    }
+
+    .modal-header {
+      background-color: #1d3557;
+      color: #fff;
+    }
+
+    .modal-title {
+      font-weight: bold;
+    }
+
+    .modal-body input {
+      border-radius: 5px;
+      padding: 10px;
+      width: 100%;
+      border: 1px solid #ccc;
+      margin-bottom: 10px;
+    }
+
+    .modal-body button {
+      padding: 10px 20px;
+      background-color: #1d3557;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+    }
+
+    .modal-body button:hover {
+      background-color: #e63946;
+    }
+
+    .back-button {
+      display: inline-block;
+      margin: 20px 0;
+      font-size: 16px;
+      color: #1d3557;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 10px;
+    }
+
+    .back-button:hover {
+      color: white;
+      background-color: #1d355770;
+      padding: 10px !important;
+    }
+
+    .blog {
+      background: #fff;
+      border-radius: 15px;
+      padding: 25px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin: 20px auto;
+      max-width: 900px;
+      transition: all 0.3s ease;
+    }
+
+    .blog:hover {
+      transform: scale(1.02);
+    }
+
+    .blog h3 {
+      color: #1d3557;
+      font-size: 26px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .blog img {
+      width: 100%;
+      height: auto;
+      max-height: 400px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .blog p {
+      font-size: 16px;
+      color: #555;
+      line-height: 1.8;
+      margin-top: 20px;
+    }
+
+    .blog a {
+      color: #1d3557;
+      text-decoration: underline;
+    }
+
+    .blog a:hover {
+      color: #000000;
+    }
+    
+    .comment-form {
+            background: white;
+            color: #1d3557;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            width: 350px;
+        }
+
+        .comment-form h2 {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .comment-form input,
+        .comment-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #1d3557;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        .comment-form textarea {
+            height: 80px;
+            resize: none;
+        }
+
+        .comment-form input[type="file"] {
+            border: none;
+        }
+
+        .comment-form input[type="submit"] {
+            background-color: #1d3557;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            border-radius: 5px;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .comment-form input[type="submit"]:hover {
+            background-color: #457b9d;
+        }    
+
+    .show-comments{
+      display: flex;
+      background-color: #2f4563;
+      color: white;
+      padding: 10px;
+      margin: 10px 0 10px 0;
+      width: 50%;
+      flex-direction: column;
+    }
+    .comment-name{
+      margin-left: 15px;
+      display: flex;
+      align-items: center;
+    }
+    .comment-img-name{
+      display: flex;
+      margin-bottom: 10px;
+    }
+    .comment{
+      background-color: rgb(255, 255, 255);
+      color: black;
+      padding: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container d-flex justify-content-between align-items-center">
+      <a href="#" class="header-title">INDIA NEWS</a>
+    </div>
+  </header>
+
+  <!-- Search Modal -->
+  <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="searchModalLabel">Search</h1>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form class="searchForm">
+            <input type="text" name="search" placeholder="Search here..." />
+            <button type="submit" class="btn">Search</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main class="container">
+    <a href="/" class="back-button"><i class="ri-arrow-left-s-line" style="font-size: 20px;"></i>  <i class="ri-home-5-line" style="font-size: 26px;"></i> Home</a>
+    <div class="blog">
+      <h3><%= singleBlog.title %></h3>
+      <a href="/singleBlog">
+      </a>
+      <p><%- singleBlog.message %></p>
+    </div>
+    <form action="/addComment" method="post" enctype="multipart/form-data">
+      <table>
+        <tr>
+          <td>
+            <input type="hidden" value="<%=singleBlog._id%>" name="postId">
+          </td>
+          <td>
+            <input type="text" name="name" placeholder="Enter Name">
+          </td>
+          <td>
+            <input type="email" name="email" placeholder="Enter Email">
+          </td>
+          <td>
+            <textarea name="Comment" placeholder="Enter your comment"></textarea>
+          </td>
+          <td>
+            <input type="file" name="Image">
+          </td>
+          <td>
+            <input type="submit">
+          </td>
+        </tr>
+      </table>
+
+     <div class="comment-box">
+      <%Commentsdata.map((v,i)=>{%>
+        <div class="show-comments">
+          <div class="comment-img-name">
+            <img src="<%=v.Image%>" height="50px">
+            <div class="comment-name">
+              <%=v.name%>
+            </div>
+          </div>
+          <div class="comment">
+            <%=v.Comment%>
+          </div>
+          <!-- <%=v.email%> -->
+        </div>
+        <%})%>
+     </div>
+    </form>
+  </main>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

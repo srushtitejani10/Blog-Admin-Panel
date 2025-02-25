@@ -1,0 +1,89 @@
+<%- include("./layouts/header") %>
+<link rel="stylesheet" href="/icons/remixicon.css" type="text/css" />
+<link rel="stylesheet" href="/css/style.css" />
+
+<!--end::Sidebar-->
+<!--begin::App Main-->
+<main class="app-main">
+  <!--begin::App Content Header-->
+  <div class="app-content-header">
+    <!--begin::Container-->
+    <div class="container-fluid">
+      <!--begin::Row-->
+      <div class="row mb-2">
+        <div class="col-sm-6"><h3 class="mb-0">My Profile</h3></div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-end">
+            <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Profile</li>
+          </ol>
+        </div>
+      </div>
+      <!--end::Row-->
+    </div>
+    <!--end::Container-->
+  </div>
+  <!--end::App Content Header-->
+  <!--begin::App Content-->
+  <div class="app-content">
+    <!--begin::Container-->
+    <div class="container-fluid">
+      <!--begin::Row-->
+      <div class="row">
+        <div>
+          <div class="myProfile1 mb-3">
+            <div class="profile">
+              <img src="<%=locals.user.image%>" alt="" />
+            </div>
+            <div class="adminDetails ms-4">
+              <h2><%=locals.user.name%></h2>
+              <h4>Admin</h4>
+              <p><%=locals.user.city%>,United States</p>
+            </div>
+          </div>
+          <div class="info row mb-3">
+            <div class="infoTitle">
+              <h4>Personal Information</h4>
+              <a href="/editAdmin/<%=locals.user._id%>" class="editBtn">
+                <p>Edit</p>
+                <i class="ri-edit-2-line"></i>
+              </a>
+            </div>
+            <hr class="mt-2 mb-4"/>
+            <div class="col-md-4">
+              <h3>Name</h3>
+              <h2><%=locals.user.name%></h2>
+            </div>
+            <div class="col-md-4">
+              <h3>Email Address</h3>
+              <h2><%=locals.user.email%></h2>
+            </div>
+            <div class="col-md-4">
+              <h3>Hobby</h3>
+              <h2><%=locals.user.hobby%></h2>
+            </div>
+            <div class="col-md-4 my-4">
+              <h3>Phone Number</h3>
+              <h2>+(91) 645-6890-2345</h2>
+            </div>
+            <div class="col-md-4 my-4">
+              <h3>Date of Birth</h3>
+              <h2>28-08-2005</h2>
+            </div>
+            <div class="col-md-4 my-4">
+              <h3>User Role</h3>
+              <h2>Admin</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--end::Row-->
+    </div>
+    <!--end::Container-->
+  </div>
+  <!--end::App Content-->
+</main>
+<!--end::App Main-->
+<!--begin::Footer-->
+
+<%- include("./layouts/footer") %>

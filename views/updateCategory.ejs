@@ -1,0 +1,93 @@
+<%- include("./layouts/header") %>
+
+<!--end::Sidebar-->
+<!--begin::App Main-->
+<main class="app-main">
+  <!--begin::App Content Header-->
+  <div class="app-content-header">
+    <!--begin::Container-->
+    <div class="container-fluid">
+      <!--begin::Row-->
+      <div class="row align-center">
+        <div class="col-sm-6"><h3 class="mb-0">Edit Category</h3></div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-end">
+            <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+            <li class="breadcrumb-item active" aria-current="page">
+              Edit Category
+            </li>
+          </ol>
+        </div>
+      </div>
+      <!--end::Row-->
+    </div>
+    <!--end::Container-->
+  </div>
+  <!--end::App Content Header-->
+  <!--begin::App Content-->
+  <div class="app-content">
+    <!--begin::Container-->
+    <div class="container-fluid">
+      <!--begin::Row-->
+      <div class="row g-4">
+        <!--begin::Col-->
+
+        <!--end::Col-->
+        <!--begin::Col-->
+        <div class="col-md-12">
+          <!--begin::Quick Example-->
+          <div class="card card-primary card-outline mb-4">
+            <!--begin::Header-->
+
+            <!--end::Header-->
+            <!--begin::Form-->
+            <form method="post" action="/category/updateCategory">
+              <input type="hidden" name="id" value="<%=editCategory.id%>" />
+              <!--begin::Body-->
+              <div class="card-body row">
+                <div class="col-md-12 mb-3">
+                  <label for="validationCustom01" class="form-label"
+                    >Category Name</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="validationCustom01"
+                    required
+                    name="categoryName"
+                    placeholder="Enter Category Name"
+                    value="<%=editCategory.categoryName%>"
+                  />
+                  <div class="valid-feedback">Looks good!</div>
+                </div>
+              </div>
+              <!--end::Body-->
+              <!--begin::Footer-->
+              <div class="card-footer">
+                <button type="submit" class="btn btn-primary me-0">
+                  Edit Category
+                </button>
+              </div>
+              <!--end::Footer-->
+            </form>
+            <!--end::Form-->
+          </div>
+          <!--end::Horizontal Form-->
+        </div>
+        <!--end::Col-->
+        <!--begin::Col-->
+        <div class="col-md-6">
+          <!--end::Form Validation-->
+        </div>
+        <!--end::Col-->
+      </div>
+      <!--end::Row-->
+    </div>
+    <!--end::Container-->
+  </div>
+  <!--end::App Content-->
+</main>
+<!--end::App Main-->
+<!--begin::Footer-->
+
+<%- include("./layouts/footer") %>

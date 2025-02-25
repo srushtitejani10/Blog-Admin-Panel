@@ -1,0 +1,132 @@
+<%- include("./layouts/header") %>
+
+<!--end::Sidebar-->
+<!--begin::App Main-->
+<main class="app-main">
+  <!--begin::App Content Header-->
+  <div class="app-content-header">
+    <!--begin::Container-->
+    <div class="container-fluid">
+      <!--begin::Row-->
+      <div class="row align-center">
+        <div class="col-sm-6"><h3 class="mb-0">Edit Blog</h3></div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-end">
+            <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+            <li class="breadcrumb-item active" aria-current="page">
+              Edit Category
+            </li>
+          </ol>
+        </div>
+      </div>
+      <!--end::Row-->
+    </div>
+    <!--end::Container-->
+  </div>
+  <!--end::App Content Header-->
+  <!--begin::App Content-->
+  <div class="app-content">
+    <!--begin::Container-->
+    <div class="container-fluid">
+      <!--begin::Row-->
+      <div class="row g-4">
+        <!--begin::Col-->
+
+        <!--end::Col-->
+        <!--begin::Col-->
+        <div class="col-md-12">
+          <!--begin::Quick Example-->
+          <div class="card card-primary card-outline mb-4">
+            <!--begin::Header-->
+
+            <!--end::Header-->
+            <!--begin::Form-->
+            <form method="post" action="/category/blog/updateblog">
+              <input type="hidden" name="id" value="<%=editBlog.id%>" />
+              <!--begin::Body-->
+              <div class="card-body row">
+                <div class="col-md-12 mb-3">
+                  <label for="validationCustom04" class="form-label"
+                    >Select Category</label
+                  >
+                  
+                  <select
+                    class="form-select"
+                    id="validationCustom04"
+                    name="categoryId"
+                  >
+                    <option selected disabled value="">--Select-Category--</option>
+                    <%categories.map((v,i)=>{%>
+                      <option value="<%=v.id%>" <%if(categoryName = v){%><%='selected'%><%}%>><%=v.categoryName%></option>
+                <%})%>
+                  </select>
+                </div>
+                <div class="col-md-12 mb-3">
+                  <label for="validationCustom01" class="form-label"
+                    >Title</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="validationCustom01"
+                    required
+                    name="title"
+                    placeholder="Enter Category Name"
+                    value="<%=editBlog.title%>"
+                  />
+                  <div class="valid-feedback">Looks good!</div>
+                </div>
+                <div class="input-group mb-3">
+                  <span class="input-group-text">Message</span>
+                  <textarea
+                    class="form-control"
+                    aria-label="With textarea"
+                    name="message"
+                  ><%=editBlog.message%></textarea>
+                </div>
+                <div class="input-group mb-3">
+                  <input
+                    type="file"
+                    class="form-control"
+                    id="inputGroupFile02"
+                    name="image"
+                  />
+                  <label class="input-group-text" for="inputGroupFile02"
+                    >Upload</label
+                  >
+                </div>
+                <div class="mb-3">
+                <img src="<%=editBlog.image%>" height="100" alt="">
+
+                </div>
+              </div>
+              <!--end::Body-->
+              <!--begin::Footer-->
+              <div class="card-footer">
+                <button type="submit" class="btn btn-primary me-0">
+                  Edit Blog
+                </button>
+              </div>
+              <!--end::Footer-->
+            </form>
+            <!--end::Form-->
+          </div>
+          <!--end::Horizontal Form-->
+        </div>
+        <!--end::Col-->
+        <!--begin::Col-->
+        <div class="col-md-6">
+          <!--end::Form Validation-->
+        </div>
+        <!--end::Col-->
+      </div>
+      <!--end::Row-->
+    </div>
+    <!--end::Container-->
+  </div>
+  <!--end::App Content-->
+</main>
+<!--end::App Main-->
+<!--begin::Footer-->
+
+<%- include("./layouts/footer") %>

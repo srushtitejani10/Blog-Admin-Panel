@@ -1,0 +1,172 @@
+<%- include("./layouts/header") %>
+  <link rel="stylesheet" href="/icons/remixicon.css" type="text/css" />
+  <style>
+    a {
+      text-decoration: none;
+    }
+
+    .delete,
+    .edit {
+      background-color: #dc3545;
+      color: white;
+      margin-right: 5px;
+      padding: 6px;
+      font-size: 20px;
+      border-radius: 5px;
+    }
+
+    .edit {
+      background-color: #198754;
+    }
+
+    .searchForm input {
+      border-radius: 5px;
+      padding: 5px 10px;
+      width: 190px;
+      border: 1px solid #343a40;
+      font-size: 15px;
+      outline-color: #0d6efd;
+    }
+  </style>
+
+  <!--end::Sidebar-->
+  <!--begin::App Main-->
+  <main class="app-main">
+    <!--begin::App Content Header-->
+    <div class="app-content-header">
+      <!--begin::Container-->
+      <div class="container-fluid">
+        <!--begin::Row-->
+        <div class="row">
+          <div class="col-sm-4">
+            <h3 class="mb-0">View Category</h3>
+          </div>
+          <div class="col-sm-4">
+            <form class="searchForm">
+              <input type="text" name="search" value="<%=search%>" placeholder="Search Here... " />
+              <button class="btn btn-primary mx-1" style="font-size: 12px">
+                <i class="bi bi-search"></i>
+              </button>
+              <a href="/category/viewCategory" class="btn btn-primary" style="font-size: 12px"><i
+                  class="bi bi-arrow-clockwise"></i></a>
+              <div class="d-flex align-item-center justify-content-center">
+                <a href="/category/viewCategory/?sortValue=1" class="btn btn-primary m-1 px-3 my-3">Asc</a>
+                <a href="/category/viewCategory/?sortValue=-1" class="btn btn-primary m-1 px-3 my-3">Des</a>
+              </div>
+            </form>
+          </div>
+          <div class="col-sm-4">
+            <ol class="breadcrumb float-sm-end">
+              <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+              <li class="breadcrumb-item active" aria-current="page">
+                View Category
+              </li>
+            </ol>
+          </div>
+        </div>
+        <!--end::Row-->
+      </div>
+      <!--end::Container-->
+    </div>
+    <!--end::App Content Header-->
+    <!--begin::App Content-->
+    <div class="app-content">
+      <!--begin::Container-->
+      <div class="container-fluid">
+        <!--begin::Row-->
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card mb-4">
+              <div class="card-header">
+                <h3 class="card-title">Bordered Table</h3>
+
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <form action="/category/multipleCategoriesDelete" method="post">
+                  <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th style="width: 15px">
+                          <input type="checkbox" id="checkAll" />
+                          <button type="submit" id="allDelete" class="btn btn-danger">
+                            <i class="ri-delete-bin-2-fill"></i>
+                          </button>
+                        </th>
+                        <th style="width: 15px">#</th>
+                        <th>Category Name</th>
+                        <th>Created Date</th>
+                        <th>Updated Date</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <%categoryData.map((v,i)=>{%>
+                        <tr>
+                          <td valign="middle"><input type="checkbox" name="Ids" value="<%=v.id%>" /></td>
+                          <td valign="middle"><%=++i%></td>
+                          <td valign="middle"><%=v.categoryName%></td>
+                          <td valign="middle"><%= new Date(v.createdAt).toLocaleDateString() %></td>
+                          <td valign="middle"><%= new Date(v.updatedAt).toLocaleDateString() %></td>
+                          <td valign="middle"><%if(v.status==true){%>
+                              <a href="/category/changeCategoryStatus/?categoryId=<%=v.id%>&status=false"
+                                class="btn btn-success">Active</a>
+                              <%} else{%>
+                                <a href="/category/changeCategoryStatus/?categoryId=<%=v.id%>&status=true"
+                                  class="btn btn-danger">Deactive</a>
+                                <%}%>
+                          </td>
+                          <td valign="middle"><a href="/category/deleteCategory/<%=v.id%>"><i class="ri-delete-bin-2-fill delete"></i></a>
+                            <a href="/category/editCategory/<%=v.id%>"><i class="ri-file-edit-fill edit"></i></a>
+                          </td>
+                        </tr>
+
+                        <%})%>
+                    </tbody>
+                  </table>
+                </form>
+              </div>
+              <!-- /.card-body -->
+              <div class="card-footer clearfix">
+                <ul class="pagination pagination-sm m-0 float-end">
+                  <li class="page-item">
+                    <a class="page-link btn btn-primary" href="?page=<%=parseInt(page)-1%>&search=<%=search%>">Prev</a>
+                  </li>
+                  <li>
+                    <a class="btn">
+                      <%=page+1%>
+                    </a>
+                  </li>
+                  <li class="page-item">
+                    <a class="page-link btn btn-primary" href="?page=<%=parseInt(page)+1%>&search=<%=search%>">Next</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+          <!-- /.col -->
+        </div>
+        <!--end::Row-->
+      </div>
+      <!--end::Container-->
+    </div>
+    <!--end::App Content-->
+  </main>
+  <!--end::App Main-->
+  <!--begin::Footer-->
+
+  <%- include("./layouts/footer") %>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    <script>
+      $("#allDelete").hide();
+
+      $("#checkAll").click(function () {
+        $("input:checkbox").prop("checked", this.checked);
+        $("#allDelete").toggle();
+      });
+    </script>
